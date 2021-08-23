@@ -14,11 +14,12 @@ class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.password === this.state.confirmPassword) {
+    if (this.state.password !== this.state.confirmPassword) {
+      console.log("The password does not match");
+      alert("The password does not match. Please try again");
+    } else {
       this.props.signUp(this.state);
     }
-    console.log("The password does not match");
-    this.setState({ error: "The password does not match" });
   };
 
   handleChange = (e) => {
@@ -76,7 +77,7 @@ class SignUp extends Component {
             <label htmlFor="confirmPassword">Confirm password</label>
             <input
               type="password"
-              id="confirm-password"
+              id="confirmPassword"
               placeholder="Confirm password"
               onChange={this.handleChange}
             />
